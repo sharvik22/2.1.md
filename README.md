@@ -59,6 +59,19 @@
 
 ### Решение 1
 
+* Создал deployment.yaml с дмумя контейнерамми busybox и multitool, применил его
+
+![image](https://github.com/user-attachments/assets/5dca8de3-ca80-43d6-a01a-882754915cc8)
+
+* busybox: Контейнер, который каждые 5 секунд записывает текущую дату и время в файл /shared-data/output.log
+* multitool: Контейнер, который следит за изменениями в файле /shared-data/output.log и выводит их в консоль
+* Volume: Используется emptyDir для создания общей директории между контейнерами.
+
+![image](https://github.com/user-attachments/assets/7a4d2044-aa61-4420-a7c4-40e00a0e9fec)
+
+* контейнер multitool успешно читает файл, который периодически обновляется контейнером busybox
+
+
 ---
 
 ### Решение 2
