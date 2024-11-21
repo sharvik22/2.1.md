@@ -59,24 +59,43 @@
 
 ### Решение 1
 
-* Создал deployment.yaml с двумя контейнерами busybox и multitool, применил его
+* Создал манифест deployment.yaml с двумя контейнерами busybox и multitool, применил его.
+
+
+
 
 ![image](https://github.com/user-attachments/assets/5dca8de3-ca80-43d6-a01a-882754915cc8)
 
-* busybox: Контейнер, который каждые 5 секунд записывает текущую дату и время в файл /shared-data/output.log
-* multitool: Контейнер, который следит за изменениями в файле /shared-data/output.log и выводит их в консоль
-* Volume: Используется emptyDir для создания общей директории между контейнерами.
+* busybox: контейнер, который каждые 5 секунд записывает текущую дату и время в файл /shared-data/output.log.
+* multitool: контейнер, который следит за изменениями в файле /shared-data/output.log и выводит их в консоль.
+* Volume: используется emptyDir для создания общей директории между контейнерами.
 
 ![image](https://github.com/user-attachments/assets/7a4d2044-aa61-4420-a7c4-40e00a0e9fec)
 
 * контейнер multitool успешно читает файл, который периодически обновляется контейнером busybox
 
-
 ---
 
 ### Решение 2
 
+* Создал манифест daemonSet.yaml, применил его.
+
+* ![image](https://github.com/user-attachments/assets/17e8853f-153f-48cd-8fcf-4727b8c7e03c)
+
+![image](https://github.com/user-attachments/assets/d29d8220-ed1a-4728-babb-c8196eecea66)
+
+* multitool: контейнер, который следит за изменениями в файле /var/log/syslog и выводит их в консоль.
+* volume: используется hostPath для монтирования директории /var/log с хостовой машины в контейнер.
+
+![image](https://github.com/user-attachments/assets/64adeae8-ca68-496b-a406-53817279e0cf)
+
+* вывод командлы kubectl logs -f multitool-syslog-reader-mzvh4 -c multitool
+![image](https://github.com/user-attachments/assets/a8e68915-1f78-445c-a94c-90c5d773dd85)
+
+* вывод команды  nano /var/log/syslog
+![image](https://github.com/user-attachments/assets/5710fe2c-f4ff-490d-bf70-00cc53fa7659)
+
+
+
 
 ---
-
-
