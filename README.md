@@ -59,7 +59,7 @@
 
 ### Решение 1
 
-* Создал deployment.yaml с двумя контейнерамми busybox и multitool, применил его
+* Создал deployment.yaml с двумя контейнерами busybox и multitool, применил его
 
 ![image](https://github.com/user-attachments/assets/5dca8de3-ca80-43d6-a01a-882754915cc8)
 
